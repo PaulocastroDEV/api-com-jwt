@@ -1,4 +1,4 @@
-package com.apicomsecurity.web.config;
+package com.apicomsecurity.web.Security.config;
 
 import java.io.IOException;
 
@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,8 +17,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Component
@@ -39,6 +38,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 			return;
 		}
 		jwt=authHeader.substring(7);
+		System.out.println(jwt);
 		userEmail= jwtService.extractUsername(jwt);//vamos extrar o userEmail para o jwt token
 		if(userEmail != null && SecurityContextHolder.getContext().getAuthentication()==null) {
 			UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);

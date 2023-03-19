@@ -1,4 +1,4 @@
-package com.apicomsecurity.web.config;
+package com.apicomsecurity.web.Security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

@@ -1,6 +1,4 @@
-package com.apicomsecurity.web.config;
-
-import javax.servlet.Filter;
+package com.apicomsecurity.web.Security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -32,7 +30,7 @@ public class SecurityConfiguration {
 			.csrf()
 			.disable()
 			.authorizeHttpRequests()
-			.antMatchers("/login")
+			.antMatchers("/auth/**")
 			.permitAll()
 			.anyRequest()
 			.authenticated()
@@ -41,7 +39,7 @@ public class SecurityConfiguration {
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and()
 			.authenticationProvider(authenticationProvider)
-			.addFilterBefore(jwtAuthFilter, (Class<? extends Filter>) UsernamePasswordAuthenticationFilter.class);
+			.addFilterBefore(jwtAuthFilter,UsernamePasswordAuthenticationFilter.class);
 			
 			
 		return http.build();
