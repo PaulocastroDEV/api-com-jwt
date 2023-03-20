@@ -1,4 +1,4 @@
-package com.apicomsecurity.web.Security.Auth;
+package com.apicomsecurity.web.Security.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
